@@ -1,0 +1,105 @@
+/* Style for the 3D circular carousel */
+.carousel-container {
+    perspective: 1500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 500px; /* Increased height to fit larger images */
+  }
+  
+  .carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    animation: rotateCarousel 20s infinite linear;
+  }
+  
+  .carousel-item {
+    flex: 0 0 auto;
+    width: 250px; /* Increased width */
+    height: 250px; /* Increased height */
+    margin: 0 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform-origin: 50% 50%;
+    backface-visibility: hidden;
+    transition: transform 1s ease;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .carousel-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  
+  /* Circular positioning of the items */
+  .carousel-item:nth-child(1) {
+    transform: rotateY(0deg) translateZ(400px); /* Increased translateZ */
+  }
+  
+  .carousel-item:nth-child(2) {
+    transform: rotateY(60deg) translateZ(400px); /* Increased translateZ */
+  }
+  
+  .carousel-item:nth-child(3) {
+    transform: rotateY(120deg) translateZ(400px); /* Increased translateZ */
+  }
+  
+  .carousel-item:nth-child(4) {
+    transform: rotateY(180deg) translateZ(400px); /* Increased translateZ */
+  }
+  
+  .carousel-item:nth-child(5) {
+    transform: rotateY(240deg) translateZ(400px); /* Increased translateZ */
+  }
+  
+  .carousel-item:nth-child(6) {
+    transform: rotateY(300deg) translateZ(400px); /* Increased translateZ */
+  }
+  
+  /* Navigation buttons */
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    padding: 10px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 10;
+    transition: background-color 0.3s;
+  }
+  
+  .carousel-button:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .prev {
+    left: 10px;
+  }
+  
+  .next {
+    right: 10px;
+  }
+  
+  /* Animation to rotate the carousel */
+  @keyframes rotateCarousel {
+    0% {
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform: rotateY(360deg);
+    }
+  }
