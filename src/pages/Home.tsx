@@ -27,33 +27,31 @@ const Home = () => {
   const [showCarousel, setShowCarousel] = useState(false);
   const [quote, setQuote] = useState("");
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(false);
   const [showControls, setShowControls] = useState(false);
   
   const audioRef = useRef(new Audio(songs[currentSongIndex]));
   
   const playSong = () => {
     audioRef.current.src = songs[currentSongIndex];
-    audioRef.current.play().then(() => setIsPlaying(true)).catch(() => skipSong());
+    audioRef.current.play().catch(() => skipSong());
   };
 
   const pauseSong = () => {
     audioRef.current.pause();
-    setIsPlaying(false);
   };
 
   const skipSong = () => {
     let nextIndex = (currentSongIndex + 1) % songs.length;
     setCurrentSongIndex(nextIndex);
     audioRef.current.src = songs[nextIndex];
-    audioRef.current.play().catch(() => setIsPlaying(false));
+    audioRef.current.play().catch(() => {});
   };
 
   const previousSong = () => {
     let prevIndex = (currentSongIndex - 1 + songs.length) % songs.length;
     setCurrentSongIndex(prevIndex);
     audioRef.current.src = songs[prevIndex];
-    audioRef.current.play().catch(() => setIsPlaying(false));
+    audioRef.current.play().catch(() => {});
   };
 
   const calculateLove = () => {
@@ -72,16 +70,14 @@ const Home = () => {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-between bg-gradient-to-b from-pink-400 to-red-600 text-white relative overflow-hidden">
-     <motion.h1
-  className="text-4xl md:text-3xl sm:text-2xl xs:text-xl font-bold mb-8 pt-5"
-  initial={{ opacity: 0, y: -50 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1 }}
->
-  ❤️ Valentine’s Love Calculator 💖
-</motion.h1>
-
-
+      <motion.h1
+        className="text-4xl md:text-3xl sm:text-2xl xs:text-xl font-bold mb-8 pt-5"
+        initial={{ opacity: 0, y: -50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        ❤️ Valentine’s Love Calculator 💖
+      </motion.h1>
 
       <div className="bg-white/10 backdrop-blur-sm rounded-lg p-6 sm:p-8 shadow-lg">
         <MatchForm 
@@ -134,7 +130,7 @@ const Home = () => {
             <div className="carousel">
               {userImages.concat(partnerImages).map((img, index) => (
                 <div key={index} className="carousel-item">
-                  <img src={URL.createObjectURL(img)} alt={`Image ${index + 1}`} className="carousel-image" />
+                  <img src={URL.createObjectURL(img)} alt={`pic ${index + 1}`} className="carousel-image" />
                 </div>
               ))}
             </div>

@@ -76,7 +76,7 @@ const MatchForm: React.FC<MatchFormProps> = ({
             <div key={index} className="w-24 h-24 rounded-lg overflow-hidden">
               <img
                 src={preview}
-                alt={`User Image ${index + 1}`}
+                alt={`User pic s${index + 1}`}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -100,7 +100,7 @@ const MatchForm: React.FC<MatchFormProps> = ({
             <div key={index} className="w-24 h-24 rounded-lg overflow-hidden">
               <img
                 src={preview}
-                alt={`Partner Image ${index + 1}`}
+                alt={`Partner pic ${index + 1}`}
                 className="w-full h-full object-cover"
               />
             </div>
